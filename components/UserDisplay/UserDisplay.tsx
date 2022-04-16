@@ -3,14 +3,18 @@ import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import React, { FunctionComponent } from 'react';
+import { motion } from 'framer-motion';
 import measureDateDiffirence from '../../helpers/measureDateDiffirence';
 import UserEventsList from '../UserEventsList/UserEventsList';
 import styles from './UserDisplay.module.scss';
 
 const UserDisplay: FunctionComponent<{ user: UserProfile }> = ({ user }) => {
   return (
-    <div
-      className={`d-flex flex-column align-items-center my-2 ${styles['user-display-container']}`}>
+    <motion.div
+      whileHover={{
+        scale: 1.2,
+      }}
+      className={`d-flex flex-column align-items-center ${styles['user-display-container']}`}>
       <div className={styles['profile-image-container']}>
         <Image
           width='100%'
@@ -58,7 +62,7 @@ const UserDisplay: FunctionComponent<{ user: UserProfile }> = ({ user }) => {
           </div>
         </li>
       </ul>
-    </div>
+    </motion.div>
   );
 };
 

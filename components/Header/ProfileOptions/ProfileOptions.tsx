@@ -8,6 +8,7 @@ import {
   faUserAstronaut,
   faPowerOff,
 } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
 const ProfileOptions: FunctionComponent = () => {
   const { user } = useUser();
@@ -16,32 +17,41 @@ const ProfileOptions: FunctionComponent = () => {
     return <></>;
   }
   return (
-    <NavDropdown
-      align='end'
-      id='basic-nav-dropdown'
-      className={`${styles['nav-link']} navigation-dropdown`}
-      title='Profile'>
-      <NavDropdown.Item
-        href={`/user/${user?.nickname}`}
-        className={styles['nav-bar-item']}>
-        <FontAwesomeIcon
-          className={styles['nav-bar-icon']}
-          icon={faUserAstronaut}
-        />
-        View profile
-      </NavDropdown.Item>
-      <NavDropdown.Item href='/create-event' className={styles['nav-bar-item']}>
-        <FontAwesomeIcon className={styles['nav-bar-icon']} icon={faPlus} />
-        New event
-      </NavDropdown.Item>
-      <NavDropdown.Divider />
-      <NavDropdown.Item
-        href={`/api/auth/logout`}
-        className={styles['nav-bar-item']}>
-        <FontAwesomeIcon className={styles['nav-bar-icon']} icon={faPowerOff} />
-        Logout
-      </NavDropdown.Item>
-    </NavDropdown>
+    <div className='dropdown show'>
+      <a
+        className={`btn btn-secondary dropdown-toggle ${styles['nav-link']}`}
+        href='#'
+        role='button'
+        id='dropdownMenuLink'
+        data-toggle='dropdown'
+        aria-haspopup='true'
+        aria-expanded='false'>
+        Profile
+      </a>
+
+      <div
+        className={`dropdown-menu ${styles['dropdown-menu']}`}
+        aria-labelledby='dropdownMenuLink'>
+        <p className='dropdown-item'>
+          <FontAwesomeIcon
+            className={styles['nav-bar-icon']}
+            icon={faUserAstronaut}
+          />
+          <Link href={`/user/${user?.nickname}`}>View</Link>
+        </p>
+        <p className='dropdown-item'>
+          <FontAwesomeIcon className={styles['nav-bar-icon']} icon={faPlus} />
+          <Link href='/create-event'>Create event</Link>
+        </p>
+        <p className='dropdown-item'>
+          <FontAwesomeIcon
+            className={styles['nav-bar-icon']}
+            icon={faPowerOff}
+          />
+          <Link href='/api/auth/logout'>Logout</Link>
+        </p>
+      </div>
+    </div>
   );
 };
 

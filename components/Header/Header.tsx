@@ -4,6 +4,7 @@ import styles from './Header.module.scss';
 import Logo from '/assets/logo.png';
 import { useUser } from '@auth0/nextjs-auth0';
 import ProfileOptions from './ProfileOptions';
+import Link from 'next/link';
 
 const Header: React.FC = () => {
   const { user } = useUser();
@@ -17,18 +18,18 @@ const Header: React.FC = () => {
           </Navbar.Brand>
         </Container>
         <Nav className={styles['navigation-link']}>
-          <Nav.Link className={styles['nav-link']} href='/'>
-            Home
-          </Nav.Link>
-          <Nav.Link className={styles['nav-link']} href='/events'>
-            Events
-          </Nav.Link>
+          <Link href='/'>
+            <a className={styles['nav-link']}>Home</a>
+          </Link>
+          <Link href='/events'>
+            <a className={styles['nav-link']}>Events</a>
+          </Link>
           {user ? (
             <ProfileOptions />
           ) : (
-            <Nav.Link className={styles['nav-link']} href='/api/auth/login'>
-              Login
-            </Nav.Link>
+            <Link href='/api/auth/login'>
+              <a className={styles['nav-link']}>Login</a>
+            </Link>
           )}
         </Nav>
       </Navbar>

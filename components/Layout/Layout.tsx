@@ -1,8 +1,8 @@
-import React from 'react';
 import Footer from '../Footer';
+import { FunctionComponent } from 'react';
 import Header from '../Header';
 
-const Layout: React.FC = ({ children }) => {
+const Layout: FunctionComponent<{ children: any }> = ({ children }) => {
   return (
     <>
       <Header></Header>

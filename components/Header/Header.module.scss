@@ -54,6 +54,14 @@
     flex: 1;
   }
 }
+.dropdown-menu {
+  left: -3em;
+  top: 3.7em;
+  p {
+    margin-bottom: 0 !important;
+    padding: 0.4em 1em;
+  }
+}
 .nav-link {
   font-size: 5.2vw;
   @media (min-width: 500px) {
@@ -75,13 +83,15 @@
     display: flex;
     align-items: center;
   }
+  a.nav-bar-item {
+    color: black !important;
+  }
 }
 .header {
   background: teal;
   width: 100%;
 }
 .nav-bar-item {
-  color: black !important;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.03em;
