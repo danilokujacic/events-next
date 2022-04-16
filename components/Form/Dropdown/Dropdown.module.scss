@@ -1,0 +1,23 @@
+.dropdown-container {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border: 1px dashed black;
+    min-height:10em;
+    cursor:pointer;
+    background:white;
+}
+.remove-button {
+    background-color:transparent;
+    border:none;
+    border-radius:100%;
+    &:hover {
+        background-color: RGBA(220, 53, 69, 0.4)
+    }
+}
+.item-container {
+    // min-width:250px;
+    @media (max-width:600px){
+        width:90% !important;
+    }
+}

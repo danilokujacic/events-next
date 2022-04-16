@@ -1,0 +1,56 @@
+/* import bootstrap to set changes */
+
+$theme-colors: (
+  'primary': teal,
+  'info': #002366,
+  'warning': #fd7e14,
+  'danger': #dc3545
+);
+@import '~bootstrap/scss/bootstrap';
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.navigation-dropdown {
+  .dropdown-menu {
+    margin-top: 13%;
+    @media (max-width: 320px) {
+      width: 100vw;
+    }
+  }
+}
+
+.carousel {
+  &.slide {
+    min-height: 300px;
+    height: 100%;
+  }
+}
+.carousel-inner {
+  height: 100%;
+}
+.carousel-item {
+  height: 100%;
+}
+
+
+input,textarea,select,option {
+  padding:0.3em;
+}
+button:disabled {
+  opacity:0.3
+}

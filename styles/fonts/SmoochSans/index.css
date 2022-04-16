@@ -1,0 +1,89 @@
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('SmoochSans-Medium.woff2') format('woff2'),
+    url('SmoochSans-Medium.woff') format('woff'),
+    url('SmoochSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('SmoochSans-ExtraBold.woff2') format('woff2'),
+    url('SmoochSans-ExtraBold.woff') format('woff'),
+    url('SmoochSans-ExtraBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('SmoochSans-Bold.woff2') format('woff2'),
+    url('SmoochSans-Bold.woff') format('woff'),
+    url('SmoochSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('SmoochSans-Black.woff2') format('woff2'),
+    url('SmoochSans-Black.woff') format('woff'),
+    url('SmoochSans-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('SmoochSans-Light.woff2') format('woff2'),
+    url('SmoochSans-Light.woff') format('woff'),
+    url('SmoochSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('SmoochSans-Regular.woff2') format('woff2'),
+    url('SmoochSans-Regular.woff') format('woff'),
+    url('SmoochSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('SmoochSans-ExtraLight.woff2') format('woff2'),
+    url('SmoochSans-ExtraLight.woff') format('woff'),
+    url('SmoochSans-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('SmoochSans-Thin.woff2') format('woff2'),
+    url('SmoochSans-Thin.woff') format('woff'),
+    url('SmoochSans-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Smooch Sans';
+  src: url('SmoochSans-SemiBold.woff2') format('woff2'),
+    url('SmoochSans-SemiBold.woff') format('woff'),
+    url('SmoochSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
