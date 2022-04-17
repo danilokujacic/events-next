@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import sortEventBy from '../utils/sortEventBy';
 import EventContext from '../helpers/eventsDashboardContext';
 import filterEventsFunction from '../utils/filterEvents';
@@ -6,37 +6,50 @@ import { EventSortMethod, EventStatus } from '../types/Event';
 
 const useEventList = () => {
   const state = useContext(EventContext);
-  const [events, setEvents] = useState(state);
-  if (!events) {
-    throw Error(`Using hook outside ${EventContext.displayName} context`);
-  }
 
+  if (!state?.clientEvents) {
+    return {
+      loading: true,
+      events: [],
+      actions: {
+        filterEvents: () => {},
+      },
+    };
+  }
   const filterEvents = (status: EventStatus | 'ALL') => {
     if (status === 'ALL') {
-      return setEvents(state);
+      return state.setClientEvents(state);
     }
-    setEvents(events.filter(filterEventsFunction(status)))
+    state.setClientEvents(
+      (state?.clientEvents || []).filter(filterEventsFunction(status)),
+    );
   };
   const sortEvents = (sort: EventSortMethod) => {
-    setEvents(events.sort(sortEventBy(sort)));
+    state.setClientEvents((state?.clientEvents || []).sort(sortEventBy(sort)));
   };
   const updateEvent = (id: string, options: any) => {
-    setEvents(
-      events.map((event) =>
+    state.setClientEvents(
+      (state?.clientEvents || []).map((event) =>
         id === event.key ? { ...event, ...options } : event,
       ),
     );
   };
 
-  const deleteEvent = (id:string) => setEvents(events.filter(event => event.key !== id));
+  const deleteEvent = (id: string) => {
+    state.setClientEvents([
+      ...(state?.clientEvents || []).filter((event) => event.key !== id),
+    ]);
+  };
   const searchEvents = (value: string) => {
-    setEvents(
-      events.filter(({ Title }) => Title.toLocaleLowerCase().includes(value)),
+    state.setClientEvents(
+      (state?.clientEvents || []).filter(({ Title }) =>
+        Title.toLocaleLowerCase().includes(value),
+      ),
     );
   };
 
   return {
-    events,
+    events: state?.clientEvents || [],
     actions: {
       filterEvents,
       sortEvents,

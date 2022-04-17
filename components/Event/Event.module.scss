@@ -23,6 +23,17 @@
 .event-status {
   margin-top: 1em;
 }
+.remove-button {
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  top: -15px;
+  right: -15px;
+  border: none;
+  border-radius: 100%;
+  background: red;
+  z-index: 10;
+}
 .event-actions {
   margin-top: 2em;
   display: flex;

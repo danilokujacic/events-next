@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import React, { FunctionComponent } from 'react';
 import { Card } from 'react-bootstrap';
-import { ImageEntry } from '../../../interfaces/GraphQL/Image';
-import ImageSlider from '../../ImageSlider/ImageSlider';
-import styles from '../Event.module.scss';
-import useEvent from '../Utils/context';
+import useEvent from '../../hooks/useEvent';
+import { ImageEntry } from '../../interfaces/GraphQL/Image';
+import ImageSlider from '../ImageSlider/ImageSlider';
+import styles from './Event.module.scss';
 
 interface IEventHeader {
   imageEntry: ImageEntry;

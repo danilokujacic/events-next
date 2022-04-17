@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import measureDateDiffirence from '../../helpers/measureDateDiffirence';
 import UserEventsList from '../UserEventsList/UserEventsList';
 import styles from './UserDisplay.module.scss';
+import renderUserDays from '../../utils/renderUserDays';
 
 const UserDisplay: FunctionComponent<{ user: UserProfile }> = ({ user }) => {
   return (
@@ -25,18 +26,8 @@ const UserDisplay: FunctionComponent<{ user: UserProfile }> = ({ user }) => {
       </div>
       <h1 className='mt-2'>{user.name}</h1>
       <h2>
-        Last time seen:{' '}
-        {measureDateDiffirence(
-          Date.now(),
-          user.last_login as string,
-          'days',
-        ) === 0
-          ? 'Today'
-          : measureDateDiffirence(
-              Date.now(),
-              user.last_login as string,
-              'days',
-            )}
+        Last time seen:
+        {renderUserDays((user?.last_login as string) || Date.now())}
       </h2>
       <ul className='d-flex p-0 w-100 mt-4 flex-column align-items-start'>
         <li className='d-flex justify-content-start align-items-center'>

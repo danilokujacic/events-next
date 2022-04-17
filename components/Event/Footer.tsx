@@ -2,9 +2,11 @@ import { gql, useMutation } from '@apollo/client';
 import moment from 'moment';
 import { FunctionComponent, memo, useMemo } from 'react';
 import { Button, Card } from 'react-bootstrap';
-import measureDateDiffirence from '../../../helpers/measureDateDiffirence';
-import style from '../Event.module.scss';
-import useEvent from '../Utils/context';
+import measureDateDiffirence from '../../helpers/measureDateDiffirence';
+import useEvent from '../../hooks/useEvent';
+import useEventList from '../../hooks/useEventsList';
+import { EventDate } from '../../types/Event';
+import style from './Event.module.scss';
 
 interface IEventProps {
   startDate: string;
@@ -13,15 +15,16 @@ interface IEventProps {
   eventID: string;
 }
 
-type EventDate = 'EVENT_FINISHED' | 'EVENT_IN_PROGRESS' | string;
-
 const getEventDates = (startDate: string, endDate: string): EventDate => {
   if (measureDateDiffirence(endDate, Date.now()) >= 0) {
     return 'EVENT_FINISHED';
   } else if (measureDateDiffirence(startDate, Date.now()) >= 0) {
     return 'EVENT_IN_PROGRESS';
   } else {
-    return `${measureDateDiffirence(Date.now(), startDate)} days left untill start`;
+    return `${measureDateDiffirence(
+      Date.now(),
+      startDate,
+    )} days left untill start`;
   }
 };
 
@@ -87,11 +90,13 @@ const EventFooter: FunctionComponent<IEventProps> = ({
     () => getEventDates(startDate, endDate),
     [startDate, endDate],
   );
-  const [state, actions] = useEvent();
+  const { actions } = useEventList();
+  const [state, eventActions] = useEvent();
   const [updateStatus, { error, loading }] = useMutation(ARHIVE_MUTATION, {
     onCompleted: (response) => {
-      console.log(actions);
-      actions.updateEvent(eventID, response.updateEvent.data.attributes);
+      if (actions.updateEvent) {
+        actions.updateEvent(eventID, response.updateEvent.data.attributes);
+      }
     },
   });
 
@@ -133,7 +138,9 @@ const EventFooter: FunctionComponent<IEventProps> = ({
       )}
 
       <div className={style['event-actions']}>
-        <Button variant='outline-primary' onClick={() => actions.toggleView()}>
+        <Button
+          variant='outline-primary'
+          onClick={() => eventActions.toggleView()}>
           {state.view === 'COLLAPSED' ? 'Expand all' : 'Collapse all'}
         </Button>
         {shouldDisplayAction ? template.action : <></>}

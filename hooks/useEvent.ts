@@ -1,12 +1,7 @@
-import { createContext, useContext } from 'react';
-import { toggleView } from '../reducer/actions';
-import { initialState } from '../reducer/reducer';
-import { EventState } from '../reducer/types';
-
-export const EventContext = createContext<[EventState, Function]>([
-  initialState,
-  () => {},
-]);
+import { useContext } from 'react';
+import { EventContext } from '../helpers/eventContext';
+import { toggleView } from '../helpers/EventReducer/actions';
+import { EventState } from '../helpers/EventReducer/types';
 
 const useEvent = (): [EventState, { [key: string]: Function }] => {
   const [state, dispatch] = useContext(EventContext);
@@ -23,5 +18,4 @@ const useEvent = (): [EventState, { [key: string]: Function }] => {
 
   return [state, actions];
 };
-
 export default useEvent;

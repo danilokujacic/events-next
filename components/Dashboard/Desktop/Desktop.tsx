@@ -5,12 +5,12 @@ import ActionMenu from '../ActionMenu';
 import styles from '../Dashboard.module.scss';
 
 const DesktopDashboard: FunctionComponent = () => {
-  const { events, actions } = useEventList();
+  const { loading, events } = useEventList();
   return (
     <div className={`${styles['dashboard']} ${styles['desktop']} pl-4`}>
-      <ActionMenu actions={actions} />
+      <ActionMenu />
       <div className={styles['events-container']}>
-        <EventsList events={events} />
+        {!loading ? <EventsList events={events} /> : <></>}
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import {
   faEarthEurope,
 } from '@fortawesome/free-solid-svg-icons';
 
-const getActions = (actions: { [key: string]: Function }) => {
+const getActions = (actions: { filterEvents: Function }) => {
   return [
     {
       label: 'All',
@@ -15,22 +15,22 @@ const getActions = (actions: { [key: string]: Function }) => {
     {
       label: 'Archived',
       icon: faBox,
-      action: () =>actions.filterEvents('ARCHIVED'),
+      action: () => actions.filterEvents('ARCHIVED'),
     },
     {
       label: 'Started',
       icon: faCalendarCheck,
-      action: () =>actions.filterEvents('ACTIVE'),
+      action: () => actions.filterEvents('ACTIVE'),
     },
     {
       label: 'Finished',
       icon: faCalendarXmark,
-      action: () =>actions.filterEvents('FINISHED'),
+      action: () => actions.filterEvents('FINISHED'),
     },
     {
       label: 'Waiting',
       icon: faCalendarXmark,
-      action: () =>actions.filterEvents('WAITING'),
+      action: () => actions.filterEvents('WAITING'),
     },
   ];
 };

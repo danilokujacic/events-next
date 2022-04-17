@@ -1,7 +1,6 @@
 import { FunctionComponent } from 'react';
-import { NavDropdown } from 'react-bootstrap';
 import { useUser } from '@auth0/nextjs-auth0';
-import styles from '../Header.module.scss';
+import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlus,

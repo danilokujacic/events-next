@@ -8,11 +8,12 @@ import MobileDashboard from './Mobile';
 
 const Dashboard: FunctionComponent<{ events: Event[] }> = ({ events }) => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [clientEvents, setClientEvents] = useState(events);
   useEffect(() => {
     setIsMobile(checkMobileDevice());
   }, [setIsMobile]);
   return (
-    <EventDashboardContext.Provider value={events}>
+    <EventDashboardContext.Provider value={{ clientEvents, setClientEvents }}>
       <DashboardHeader />
       {isMobile ? <MobileDashboard /> : <DesktopDashboard />}
     </EventDashboardContext.Provider>
