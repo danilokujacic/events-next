@@ -20,6 +20,7 @@ const Event: FunctionComponent<Event & { id: string }> = (props) => {
     { ...initialState, id: props.id },
     eventReducerInitializer,
   );
+
   const removeEventComponentRef = useRef<{ toggleRemove: Function } | null>(
     null,
   );
@@ -60,7 +61,11 @@ const Event: FunctionComponent<Event & { id: string }> = (props) => {
         className='px-4 py-4'
         key={props.id}>
         <Card className={`p-3 ${styles['event-card']} shadow`}>
-          <RemoveEventComponent ref={removeEventComponentRef} id={props.id} />
+          <RemoveEventComponent
+            ref={removeEventComponentRef}
+            title={props.Title}
+            id={props.id}
+          />
           <EventHeader
             imageEntry={props.EventImages}
             title={props.Title}

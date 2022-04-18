@@ -10,9 +10,11 @@ import {
 import useEventList from '../../hooks/useEventsList';
 import styles from './Event.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
+import useSnackbar from '../../hooks/useSnackbar';
 
 interface IRemoveEventComponentProps {
   id: string;
+  title: string;
 }
 
 const deleteEventMutation = gql`
@@ -28,10 +30,11 @@ const deleteEventMutation = gql`
 `;
 
 const RemoveEventComponent: FunctionComponent<IRemoveEventComponentProps> =
-  forwardRef(({ id }, ref) => {
+  forwardRef(({ id, title }, ref) => {
     const {
       actions: { deleteEvent: deleteEventSync },
     } = useEventList();
+    const toggleSnackbar = useSnackbar();
     const [deleteEvent] = useMutation(deleteEventMutation, {
       variables: {
         id,
@@ -40,6 +43,11 @@ const RemoveEventComponent: FunctionComponent<IRemoveEventComponentProps> =
         if (deleteEventSync) {
           deleteEventSync(id);
         }
+        toggleSnackbar({
+          type: 'SUCCESS',
+          text: <span>Event "{title}" removed!</span>,
+          position: 'bottom-end',
+        });
       },
     });
     const handleRemoveEvent = () => {

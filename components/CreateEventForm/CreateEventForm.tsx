@@ -13,6 +13,7 @@ import Select from '../Form/Select/Select';
 import Textarea from '../Form/Textarea';
 import styles from './CreateEventForm.module.scss';
 import { submitForm } from '../../utils/CreateEventForm/actions';
+import useSnackbar from '../../hooks/useSnackbar';
 
 const initialState = {
   title: '',
@@ -28,9 +29,9 @@ const CreateEventForm: FunctionComponent<{ user: any }> = ({
 }) => {
   const [inputs, setInputs] = useState<{ [key: string]: any }>(initialState);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [showToast, setShowToast] = useState<boolean | string>(false);
   const [submitDisabled, setSubmitDisabled] = useState<boolean>(true);
   const [users, setUsers] = useState<{ label: string; value: string }[]>([]);
+  const toggleSnackbar = useSnackbar();
 
   useEffect(() => {
     (async () => {
@@ -70,11 +71,12 @@ const CreateEventForm: FunctionComponent<{ user: any }> = ({
     }
 
     if (typeof data === 'string') {
-      setShowToast(data);
-
-      await setTimeout(() => {
-        router.push('/');
-      }, 3000);
+      toggleSnackbar({
+        text: data,
+        type: 'SUCCESS',
+        position: 'bottom-end',
+      });
+      router.push('/');
     }
   };
 
@@ -179,13 +181,6 @@ const CreateEventForm: FunctionComponent<{ user: any }> = ({
           </FormContext.Provider>
         </form>
       </div>
-      <ToastContainer className='p-3' position='bottom-end'>
-        <Toast bg='primary' show={!!showToast}>
-          <Toast.Body className={styles['toast-text']}>
-            Event Test successfully created!
-          </Toast.Body>
-        </Toast>
-      </ToastContainer>
     </div>
   );
 };

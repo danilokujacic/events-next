@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 import { UserProvider } from '@auth0/nextjs-auth0';
 import { ApolloProvider } from '@apollo/client';
 import { client } from '../client';
+import Snackbar from '../components/Snackbar';
 
 const auth0Config = {
   domain: `${process.env.NEXT_PUBLIC_AUTH0_DOMAIN}`,
@@ -18,10 +19,13 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <ApolloProvider client={client}>
       <UserProvider {...auth0Config}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Snackbar>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Snackbar>
       </UserProvider>
+
       <script
         src='https://code.jquery.com/jquery-3.5.1.slim.min.js'
         integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj'
