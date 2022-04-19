@@ -45,7 +45,7 @@ const RemoveEventComponent: FunctionComponent<IRemoveEventComponentProps> =
         }
         toggleSnackbar({
           type: 'SUCCESS',
-          text: <span>Event "{title}" removed!</span>,
+          text: `Event "${title}" removed!`,
           position: 'bottom-end',
         });
       },

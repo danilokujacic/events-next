@@ -18,7 +18,7 @@ const useEventList = () => {
   }
   const filterEvents = (status: EventStatus | 'ALL') => {
     if (status === 'ALL') {
-      return state.setClientEvents(state);
+      return state.setClientEvents(state.clientEvents);
     }
     state.setClientEvents(
       (state?.clientEvents || []).filter(filterEventsFunction(status)),

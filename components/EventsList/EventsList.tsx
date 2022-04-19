@@ -8,16 +8,12 @@ const EventsList: FunctionComponent<{ events: Event[] }> = ({ events }) => {
     return <div>Currently no events</div>;
   }
 
-  console.log(events);
-
   return (
     <>
-      <AnimatePresence>
-        <LayoutGroup>
+      <AnimatePresence exitBeforeEnter>
           {events.map((event) => (
             <EventComponent {...event} id={event.key} />
           ))}
-        </LayoutGroup>
       </AnimatePresence>
     </>
   );

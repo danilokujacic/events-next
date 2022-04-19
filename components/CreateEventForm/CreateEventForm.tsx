@@ -72,7 +72,11 @@ const CreateEventForm: FunctionComponent<{ user: any }> = ({
 
     if (typeof data === 'string') {
       toggleSnackbar({
-        text: data,
+        text: (
+          <span>
+            Event <b>"{data}"</b> successfully added!
+          </span>
+        ),
         type: 'SUCCESS',
         position: 'bottom-end',
       });
