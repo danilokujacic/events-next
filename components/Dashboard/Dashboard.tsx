@@ -1,27 +1,34 @@
-import { FunctionComponent, useEffect, useState } from 'react';
-import checkMobileDevice from '../../helpers/checkMobileDevice';
+import { FunctionComponent, useState } from 'react';
 import Event from '../../interfaces/GraphQL/Event';
 import EventDashboardContext from '../../helpers/eventsDashboardContext';
 import DashboardHeader from './DashboardHeader';
-import DesktopDashboard from './Desktop';
+import DesktopDashboard from './UserDashboard';
 import NoEventsComponent from './NoEventsComponent';
+import { useUser } from '@auth0/nextjs-auth0';
+import GuestDashboard from './GuestDashboard';
 
 const Dashboard: FunctionComponent<{ events: Event[] }> = ({ events }) => {
-  const [isMobile, setIsMobile] = useState<boolean>(false);
   const [clientEvents, setClientEvents] = useState(events);
-  useEffect(() => {
-    setIsMobile(checkMobileDevice());
-  }, [setIsMobile]);
+  const userData = useUser();
+
+  let template;
+
+  if (!events || !events.length) {
+    template = <NoEventsComponent />;
+  } else if (!userData.user) {
+    template = <GuestDashboard />;
+  } else {
+    template = (
+      <>
+        <DashboardHeader />
+        <DesktopDashboard />
+      </>
+    );
+  }
+
   return (
     <EventDashboardContext.Provider value={{ clientEvents, setClientEvents }}>
-      {clientEvents && clientEvents.length ? (
-        <>
-          <DashboardHeader />
-          <DesktopDashboard />
-        </>
-      ) : (
-        <NoEventsComponent />
-      )}
+      {template}
     </EventDashboardContext.Provider>
   );
 };

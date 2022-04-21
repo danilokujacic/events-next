@@ -1,12 +1,16 @@
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import styles from '../styles/Home.module.scss';
-import { client } from '../client';
-import { gql } from '@apollo/client';
 import formatEntries from '../utils/GraphQL/formatEntries';
 import Event from '../interfaces/GraphQL/Event';
 import Dashboard from '../components/Dashboard/Dashboard';
+import { getEvents, getEventsForUser } from '../services/GraphQL';
+import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 
-const Home: NextPage<{ events: Event[] }> = ({ events }) => {
+const Home: NextPage<{
+  events: Event[];
+  isLoggedIn: boolean;
+  error: boolean;
+}> = ({ events, isLoggedIn, error }) => {
   return (
     <div className={styles.container}>
       <Dashboard events={events} />
@@ -15,50 +19,36 @@ const Home: NextPage<{ events: Event[] }> = ({ events }) => {
 };
 
 export default Home;
-
-export const getStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   try {
-    const { data } = await client.query({
-      query: gql`
-        query GetEvents {
-          events {
-            data {
-              id
-              attributes {
-                Title
-                StartDate
-                EndDate
-                AuthorID
-                Description
-                isArchived
-                EventImages {
-                  data {
-                    attributes {
-                      url
-                      caption
-                      name
-                    }
-                  }
-                }
-                UsersInvolved {
-                  UserID
-                }
-              }
-            }
-          }
-        }
-      `,
-    });
+    const session = await getSession(req, res);
+
+    if (!session || !session.user) {
+      const events = await getEvents();
+      return {
+        props: {
+          events: formatEntries(events),
+          isLoggedIn: false,
+          error: false,
+        },
+      };
+    }
+    const events = await getEventsForUser(session.user.nickname);
 
     return {
-      props: { events: formatEntries(data.events.data) },
-      revalidate: 3600,
+      props: {
+        events: formatEntries(events),
+        isLoggedIn: true,
+        error: false,
+      },
     };
   } catch (err) {
-    if (err instanceof Error) {
-      return { props: { error: err.message } };
-    } else {
-      return { props: { error: true } };
-    }
+    return {
+      props: {
+        events: [],
+        isLoggedIn: false,
+        error: false,
+      },
+    };
   }
 };

@@ -1,3 +1,3 @@
-import Event from './Event';
-
-export default Event;
+import EventCard from './Card';
+// import EventSnippet from './Snippet';
+export { EventCard };

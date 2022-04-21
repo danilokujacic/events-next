@@ -1147,6 +1147,11 @@ caniuse-lite@^1.0.30001283:
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001313.tgz"
   integrity sha512-rI1UN0koZUiKINjysQDuRi2VeSCce3bYJNmDcj3PIKREiAmjakugBul1QSkg/fPrlULYl6oWfGg3PbgOSY9X4Q==
 
+canvasjs-react-charts@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/canvasjs-react-charts/-/canvasjs-react-charts-1.0.5.tgz#bdcc06f7bd50a24f69cca9615dafabc0a2a7b063"
+  integrity sha512-8P3KnAvCqftmqf4O/xG6PlIDcTr0IvzuE4l6ACXIOROKtFmnmUu/xPEeq+0vI9Xvh7zXjzZvRqw0p1uxXr034g==
+
 capture-stack-trace@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/capture-stack-trace/-/capture-stack-trace-1.0.1.tgz"

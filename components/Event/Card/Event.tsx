@@ -1,17 +1,17 @@
-import { FunctionComponent, useReducer, useRef, useState } from 'react';
+import { FunctionComponent, useReducer, useRef } from 'react';
 import { Card } from 'react-bootstrap';
-import styles from './Event.module.scss';
+import styles from '../Event.module.scss';
 import EventFooter from './Footer';
 import { motion } from 'framer-motion';
 import EventDescription from './Description';
 import {
   eventReducer,
   eventReducerInitializer,
-} from '../../helpers/EventReducer';
-import { EventContext } from '../../helpers/eventContext';
+} from '../../../helpers/EventReducer';
+import { EventContext } from '../../../helpers/eventContext';
 import EventHeader from './Header';
-import { initialState } from '../../helpers/EventReducer/reducer';
-import Event from '../../interfaces/GraphQL/Event';
+import { initialState } from '../../../helpers/EventReducer/reducer';
+import Event from '../../../interfaces/GraphQL/Event';
 import RemoveEventComponent from './RemoveEventComponent';
 
 const Event: FunctionComponent<Event & { id: string }> = (props) => {

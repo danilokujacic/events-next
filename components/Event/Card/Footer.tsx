@@ -2,11 +2,11 @@ import { gql, useMutation } from '@apollo/client';
 import moment from 'moment';
 import { FunctionComponent, memo, useMemo } from 'react';
 import { Button, Card } from 'react-bootstrap';
-import measureDateDiffirence from '../../helpers/measureDateDiffirence';
-import useEvent from '../../hooks/useEvent';
-import useEventList from '../../hooks/useEventsList';
-import { EventDate } from '../../types/Event';
-import style from './Event.module.scss';
+import measureDateDiffirence from '../../../helpers/measureDateDiffirence';
+import useEvent from '../../../hooks/useEvent';
+import useEventList from '../../../hooks/useEventsList';
+import { EventDate } from '../../../types/Event';
+import style from '../Event.module.scss';
 
 interface IEventProps {
   startDate: string;

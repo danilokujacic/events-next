@@ -7,10 +7,10 @@ import {
   forwardRef,
   useImperativeHandle,
 } from 'react';
-import useEventList from '../../hooks/useEventsList';
-import styles from './Event.module.scss';
+import useEventList from '../../../hooks/useEventsList';
+import styles from '../Event.module.scss';
 import { AnimatePresence, motion } from 'framer-motion';
-import useSnackbar from '../../hooks/useSnackbar';
+import useSnackbar from '../../../hooks/useSnackbar';
 
 interface IRemoveEventComponentProps {
   id: string;

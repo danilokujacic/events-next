@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { FunctionComponent } from 'react';
 import { Card } from 'react-bootstrap';
-import useEvent from '../../hooks/useEvent';
-import style from './Event.module.scss';
+import useEvent from '../../../hooks/useEvent';
+import style from '../Event.module.scss';
 
 interface IEventDescription {
   description: string;

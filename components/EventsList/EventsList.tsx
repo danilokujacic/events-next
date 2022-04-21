@@ -1,21 +1,24 @@
-import { AnimatePresence, LayoutGroup } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { FunctionComponent } from 'react';
 import Event from '../../interfaces/GraphQL/Event';
-import EventComponent from '../Event';
+import { EventCard } from '../Event';
+import NoEventsComponent from './NoEventsComponent';
 
 const EventsList: FunctionComponent<{ events: Event[] }> = ({ events }) => {
-  if (!events) {
-    return <div>Currently no events</div>;
+  if (!events || !events.length) {
+    return (
+      <AnimatePresence exitBeforeEnter>
+        <NoEventsComponent />
+      </AnimatePresence>
+    );
   }
 
   return (
-    <>
-      <AnimatePresence exitBeforeEnter>
-          {events.map((event) => (
-            <EventComponent {...event} id={event.key} />
-          ))}
-      </AnimatePresence>
-    </>
+    <AnimatePresence exitBeforeEnter>
+      {events.map((event) => (
+        <EventCard {...event} id={event.key} />
+      ))}
+    </AnimatePresence>
   );
 };
 
