@@ -56,3 +56,10 @@ option {
 button:disabled {
   opacity: 0.3;
 }
+.events-chart {
+  max-height: 30em;
+  height: auto !important;
+}
+.wrapper {
+  padding: 1em;
+}

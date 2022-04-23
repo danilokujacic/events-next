@@ -1147,11 +1147,6 @@ caniuse-lite@^1.0.30001283:
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001313.tgz"
   integrity sha512-rI1UN0koZUiKINjysQDuRi2VeSCce3bYJNmDcj3PIKREiAmjakugBul1QSkg/fPrlULYl6oWfGg3PbgOSY9X4Q==
 
-canvasjs-react-charts@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/canvasjs-react-charts/-/canvasjs-react-charts-1.0.5.tgz#bdcc06f7bd50a24f69cca9615dafabc0a2a7b063"
-  integrity sha512-8P3KnAvCqftmqf4O/xG6PlIDcTr0IvzuE4l6ACXIOROKtFmnmUu/xPEeq+0vI9Xvh7zXjzZvRqw0p1uxXr034g==
-
 capture-stack-trace@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/capture-stack-trace/-/capture-stack-trace-1.0.1.tgz"
@@ -1169,6 +1164,11 @@ chalk@^4.0.0:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
+
+chart.js@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-3.7.1.tgz#0516f690c6a8680c6c707e31a4c1807a6f400ada"
+  integrity sha512-8knRegQLFnPQAheZV8MjxIXc5gQEfDFD897BJgv/klO/vtIyFFmgMXrNfgrXpbTr/XbTturxRgxIXx/Y+ASJBA==
 
 "chokidar@>=3.0.0 <4.0.0":
   version "3.5.3"
@@ -3489,6 +3489,11 @@ react-bootstrap@^2.2.0:
     react-transition-group "^4.4.2"
     uncontrollable "^7.2.1"
     warning "^4.0.3"
+
+react-chartjs-2@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-4.1.0.tgz#2a123df16d3a987c54eb4e810ed766d3c03adf8d"
+  integrity sha512-AsUihxEp8Jm1oBhbEovE+w50m9PVNhz1sfwEIT4hZduRC0m14gHWHd0cUaxkFDb8HNkdMIGzsNlmVqKiOpU74g==
 
 react-dom@^17.0.2:
   version "17.0.2"

@@ -11,7 +11,7 @@ const EventCategories: FunctionComponent<IEventCategoriesProps> = ({
   events,
 }) => {
   const categorizedEvents = useMemo(() => categorizeEvents(events), [events]);
-  console.log(categorizedEvents);
+
   return (
     <div className='d-flex w-100'>
       {categorizedEvents.map((eventProps) => (

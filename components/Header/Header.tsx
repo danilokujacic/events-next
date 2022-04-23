@@ -21,11 +21,14 @@ const Header: React.FC = () => {
           <Link href='/'>
             <a className={styles['nav-link']}>Home</a>
           </Link>
-          <Link href='/events'>
-            <a className={styles['nav-link']}>Events</a>
-          </Link>
+
           {user ? (
-            <ProfileOptions />
+            <>
+              <Link href='/events'>
+                <a className={styles['nav-link']}>Events</a>
+              </Link>
+              <ProfileOptions />
+            </>
           ) : (
             <Link href='/api/auth/login'>
               <a className={styles['nav-link']}>Login</a>

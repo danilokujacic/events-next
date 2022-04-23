@@ -1,21 +1,16 @@
 import type { GetServerSideProps, NextPage } from 'next';
-import styles from '../styles/Home.module.scss';
 import formatEntries from '../utils/GraphQL/formatEntries';
 import Event from '../interfaces/GraphQL/Event';
 import Dashboard from '../components/Dashboard/Dashboard';
 import { getEvents, getEventsForUser } from '../services/GraphQL';
-import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { getSession } from '@auth0/nextjs-auth0';
 
 const Home: NextPage<{
   events: Event[];
   isLoggedIn: boolean;
   error: boolean;
 }> = ({ events, isLoggedIn, error }) => {
-  return (
-    <div className={styles.container}>
-      <Dashboard events={events} />
-    </div>
-  );
+  return <Dashboard events={events} />;
 };
 
 export default Home;

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import Event from '../../interfaces/GraphQL/Event';
-import Link from 'next/link';
 import EventSnippet from '../Event/Snippet/EventSnippet';
+import styles from './EventCategories.module.scss';
 
 interface IEventCategoryProps {
   label: string;
@@ -13,12 +13,11 @@ const Category: FunctionComponent<IEventCategoryProps> = ({
   events,
 }) => {
   return (
-    <div className='flex-grow-1 mx-4 d-flex flex-column'>
-      <h3>{label}</h3>
+    <div
+      className={`flex-grow-1 mx-4 d-flex flex-column ${styles['events-column']}`}>
+      <p className='h5'>{label}</p>
       {events.map((event) => (
-        <Link href={`/events/${event.key}`} key={event.key}>
-          <EventSnippet event={event} />
-        </Link>
+        <EventSnippet key={event.key} event={event} />
       ))}
     </div>
   );

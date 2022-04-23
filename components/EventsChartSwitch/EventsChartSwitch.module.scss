@@ -1,0 +1,28 @@
+.underline {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--bs-primary);
+}
+.item {
+  position: relative;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 5em;
+  text-align: center;
+  padding-block: 0.3em;
+  margin-right: 1em;
+  &:hover {
+    color: var(--bs-primary);
+  }
+  &.active {
+    color: var(--bs-primary);
+  }
+}
+.list {
+  list-style-type: none;
+  padding: 0;
+}

@@ -1,5 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next';
 import React from 'react';
+import GuestDashboard from '../components/Dashboard/GuestDashboard';
+import Event from '../interfaces/GraphQL/Event';
 import { getEvents } from '../services/GraphQL';
 import formatEntries from '../utils/GraphQL/formatEntries';
 
@@ -7,8 +9,7 @@ const EventsPage: NextPage<{ events: Event[]; error: boolean }> = ({
   events,
   error,
 }) => {
-  console.log({ events });
-  return <div>Events</div>;
+  return <GuestDashboard events={events} />;
 };
 
 export default EventsPage;

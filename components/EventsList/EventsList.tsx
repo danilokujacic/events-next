@@ -1,10 +1,14 @@
 import { AnimatePresence } from 'framer-motion';
 import { FunctionComponent } from 'react';
-import Event from '../../interfaces/GraphQL/Event';
+import useEventList from '../../hooks/useEventsList';
 import { EventCard } from '../Event';
 import NoEventsComponent from './NoEventsComponent';
 
-const EventsList: FunctionComponent<{ events: Event[] }> = ({ events }) => {
+const EventsList: FunctionComponent = () => {
+  const { loading, events } = useEventList();
+  if (loading) {
+    return <div>Loading events...</div>;
+  }
   if (!events || !events.length) {
     return (
       <AnimatePresence exitBeforeEnter>
